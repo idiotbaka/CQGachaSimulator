@@ -322,7 +322,7 @@
                else if($_GET["type"]=='2'){
                     echo "<img id='result_img' src='img/4.png' style='width:760px; height: 572px; margin-top: -40px; margin-left: -380px; position: absolute'/>";
                     echo "
-                    <div class='row ten-res' style='color: #fff; width: 800px; margin-left: 60px; margin-top: 50px;'>
+                    <div class='row ten-res' style='color: #fff; width: 800px; margin-left: 40px; margin-top: 30px;'>
                          <div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'>
                               ".doResult()."
                          </div>".
@@ -339,7 +339,7 @@
                               ".doResult()."
                          </div>".
                     "</div>".
-                    "<div class='row ten-res' style='color: #fff; width: 800px; margin-top: -45px; margin-left: 60px; position: absolute'>
+                    "<div class='row ten-res' style='color: #fff; width: 800px; margin-top: -45px; margin-left: 40px; position: absolute'>
                          <div class='col-md-2 col-md-2 col-sm-2 col-xs-2'>
                               ".doResult()."
                          </div>".
