@@ -10,20 +10,16 @@
 <head>
      <meta charset="UTF-8">
      <title>CQ 黄金契约模拟器</title>
-     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
     	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-     <script src="https://frappe.github.io/charts/assets/js/frappe-charts.min.js"></script>
      <style type="text/css">
           .well{
                margin: 40px auto 40px auto;
                width: 870px;
           }
-          .ui.segment.animated{
+          .well.animated{
                text-align: center;
                margin: 40px auto 40px auto;
                width: 870px;
@@ -33,7 +29,7 @@
           #img_a {
                position: absolute;
                margin-left: -372px;
-               margin-top: 237px;
+               margin-top: 230px;
                opacity: 0;
           }
           #img_a:hover{
@@ -42,7 +38,7 @@
           #img_b {
                position: absolute;
                margin-left: -199px;
-               margin-top: 214px;
+               margin-top: 207px;
                opacity: 0;
           }
           #img_b:hover{
@@ -131,7 +127,7 @@
      </script>
 </head>
 <body>
-     <div class="ui segment animated fadeInDown">
+     <div class="well animated fadeInDown">
           <img id="img_a" src="img/2.png" />
           <img id="img_b" src="img/1.png" />
           <?php 
