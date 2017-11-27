@@ -3,9 +3,28 @@
      Author idiotbaka
      CQ黄金契约模拟器
      兼容谷歌浏览器、Safari，其他没测试
-     不兼容一些手机浏览器，定位会乱
+     不兼容一小部分手机浏览器，定位和字体可能会有问题
      该项目的正式页面：iobaka.com/cq
 -->
+<?php
+     // 钻石消耗数cookie
+     if(!$_COOKIE["cost"]||$_COOKIE["cost"]==null||$_GET["clear"]==1){
+          setcookie("cost", 0, time()+3600);
+          $cost=0;
+     }
+     if($_GET["type"]==1){
+          setcookie("cost", $_COOKIE["cost"]+6, time()+3600);
+          $cost=$_COOKIE["cost"]+6;
+     }
+     else if($_GET["type"]==2){
+          setcookie("cost", $_COOKIE["cost"]+50, time()+3600);
+          $cost=$_COOKIE["cost"]+50;
+     }
+     else{
+          $cost=$_COOKIE["cost"];
+     }
+     
+?>
 <html>
 <head>
      <meta charset="UTF-8">
@@ -15,6 +34,10 @@
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
      <style type="text/css">
+          @font-face { 
+               font-family: pixel; 
+               src: url("font/pixel.ttf"); 
+          }
           .well{
                margin: 40px auto 40px auto;
                width: 870px;
@@ -25,6 +48,7 @@
                width: 870px;
                height: 530px;
                background-image: url(img/background.png);
+               font-family: pixel, "微软雅黑", "华文细黑", Arial, Helvetica, sans-serif;
           }
           #img_a {
                position: absolute;
@@ -44,35 +68,44 @@
           #img_b:hover{
                opacity: 1;
           }
+          .diamond{
+               position: absolute;
+               margin-left: 160px;
+               margin-top: -6px;
+          }
+          
+          .diamond span{
+               color: DeepSkyBlue;
+               font-size: 24px;
+          }
+          .diamond a{
+               color: DeepSkyBlue;
+               font-size: 16px;
+               color: white;
+          }
+          
+          .diamond img{
+               width: 24px;
+               margin-top: -6px;
+          }
           .col-md-2{
                padding: 0px;
           }
           .row.ten-res p{
               margin-top: -30px; 
-              width: 100px;
+              width: 120px;
+              margin-left: 48px;
           }
           #star {
                width: 12px;
                height: 12px;
           }
-          <?php
-          if($_GET["type"]=="2"){
-               echo ".row .character{
-                    width: 200px;
-               }
-               .row p{
-               margin-left: 57px;
-          }";
+          .row .character{
+               width: 200px;
           }
-          else {
-               echo ".row .character{
-                    width: 200px;
-               }
-               .row p{
+          .row p{
                margin-left: 0px;
-          }";
           }
-          ?>
           #result_text p{
                margin-left: 18px;
           }
@@ -130,7 +163,21 @@
      <div class="well animated fadeInDown">
           <img id="img_a" src="img/2.png" />
           <img id="img_b" src="img/1.png" />
-          <?php 
+          <div class="diamond">
+               <img src="img/diamond.png" />
+               <span>
+                    <?php
+                    if($_GET["clear"]==1||$cost==null){
+                         echo 0;
+                    }
+                    else {
+                         echo $cost;   
+                    }
+                    ?>
+               </span>
+               <a href="?clear=1">重置</a>
+          </div>
+          <?php
                // 4*以及以上
                function goodResultJson($star=0){
                     $json_file = "json/result_good.json";
@@ -357,17 +404,15 @@
                          </div>".
                     "</div>";
                }
-               else {
-                    echo "<p style='margin-top:12px; color: #fff;'>概率是以官方公布的数据为基础编写的。图片数据以及图片流量来自着迷网<a href='http://wiki.joyme.com/cq' target='_black'>克鲁赛德战记区</a></p>";
-               }
           ?>
      </div>
      <div class="text-zone well">
-          如果你是手机用户，或者不兼容该页面，可以点击按钮进行操作：
+          <p>如果你的手机或浏览器版本过低不兼容该页面，可以点击按钮进行操作：
           <a href="?type=1"><button class="btn btn-primary">单抽</button></a>
-          <a href="?type=2"><button class="btn btn-primary">十连抽</button></a>
-          <p style="text-align: right">Author idiotbaka</p>
-          <p style="text-align: right">图片数据以及图片流量来自着迷网<a href='http://wiki.joyme.com/cq' target='_black'>克鲁赛德战记区</a></p>
+          <a href="?type=2"><button class="btn btn-primary">十连抽</button></a></p>
+          <p style="text-align: right; margin-top: 20px">Author idiotbaka</p>
+          <p style="text-align: right">概率数据来自官方，图片数据以及图片流量来自着迷网<a href='http://wiki.joyme.com/cq' target='_black'>克鲁赛德战记WIKI区</a></p>
+          <a href="https://github.com/idiotbaka/CQGachaSimulator"><button class="btn btn-default">View on Github</button></a>
      </div>
 </body>
 </html>
